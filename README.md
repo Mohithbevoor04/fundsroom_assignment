@@ -7,7 +7,7 @@ A complete, production-grade **Mini ERP & CRM Operations Portal** built for whol
 ## 📌 Live Production Deployment & Submission Links
 
 - **GitHub Repository**: [https://github.com/Mohithbevoor04/fundsroom_assignment](https://github.com/Mohithbevoor04/fundsroom_assignment)
-- **Live Production Frontend Portal**: [https://fundsroom-assignment.vercel.app](https://fundsroom-assignment.vercel.app)
+- **Live Production Frontend Portal**: [https://fundsroom-assignment-coral.vercel.app](https://fundsroom-assignment-coral.vercel.app)
 - **Live Production Backend REST API**: [https://mini-erp-crm-backend-x84m.onrender.com](https://mini-erp-crm-backend-x84m.onrender.com)
 - **Postman API Collection**: Included in repository as [`Mini_ERP_CRM.postman_collection.json`](./Mini_ERP_CRM.postman_collection.json)
 
