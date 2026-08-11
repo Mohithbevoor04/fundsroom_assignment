@@ -1,0 +1,177 @@
+{
+  "info": {
+    "_postman_id": "erp-crm-collection-2026",
+    "name": "Mini ERP + CRM Operations Portal API",
+    "description": "Postman API Collection for testing Mini ERP + CRM REST APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Auth - Login Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@erp.com\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "2. Auth - Get Current User Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/auth/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "me"]
+        }
+      }
+    },
+    {
+      "name": "3. Customers - Get Customer List",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/customers?search=Gupta&status=Active",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "customers"],
+          "query": [
+            { "key": "search", "value": "Gupta" },
+            { "key": "status", "value": "Active" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Customers - Create New Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Rohan Joshi\",\n  \"businessName\": \"Joshi Enterprises\",\n  \"email\": \"rohan@joshient.com\",\n  \"mobile\": \"+91 91234 56789\",\n  \"gstNumber\": \"29AAACJ1234K1Z0\",\n  \"customerType\": \"Wholesale\",\n  \"address\": \"Peenya Industrial Area Stage 2, Bengaluru\",\n  \"status\": \"Lead\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/customers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "customers"]
+        }
+      }
+    },
+    {
+      "name": "5. Products - Get Product List",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "products"]
+        }
+      }
+    },
+    {
+      "name": "6. Products - Adjust Stock (IN/OUT)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"quantity\": 20,\n  \"type\": \"IN\",\n  \"reason\": \"Warehouse Shipment Intake #RESTOCK-101\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/products/:productId/adjust-stock",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "products", ":productId", "adjust-stock"]
+        }
+      }
+    },
+    {
+      "name": "7. Challans - Create Sales Challan (Confirmed & Stock Deducted)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": \"{{customerId}}\",\n  \"status\": \"Confirmed\",\n  \"items\": [\n    {\n      \"productId\": \"{{productId}}\",\n      \"quantity\": 2,\n      \"unitPrice\": 3450.00\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/challans",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "challans"]
+        }
+      }
+    },
+    {
+      "name": "8. Challans - Export PDF Invoice",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/challans/:challanId/pdf",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "challans", ":challanId", "pdf"]
+        }
+      }
+    },
+    {
+      "name": "9. Dashboard - Get Operations Metrics",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/dashboard/stats",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "dashboard", "stats"]
+        }
+      }
+    }
+  ]
+}
