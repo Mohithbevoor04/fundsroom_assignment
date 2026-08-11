@@ -16,6 +16,23 @@ const PORT = parseInt(process.env.PORT || '5000', 10);
 app.use(cors());
 app.use(express.json());
 
+// Root welcome route
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Mini ERP + CRM Operations Portal API Server is Live & Running!',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth/login',
+      customers: '/api/customers',
+      products: '/api/products',
+      challans: '/api/challans',
+      dashboard: '/api/dashboard/stats'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/customers', customerRoutes);
