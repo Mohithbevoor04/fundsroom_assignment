@@ -4,18 +4,18 @@ A complete, production-grade **Mini ERP & CRM Operations Portal** built for whol
 
 ---
 
-## 📌 Submission Overview & Quick Links
+## 📌 Live Production Deployment & Submission Links
 
 - **GitHub Repository**: [https://github.com/Mohithbevoor04/fundsroom_assignment](https://github.com/Mohithbevoor04/fundsroom_assignment)
-- **Live Frontend App**: [https://swift-words-shout.loca.lt](https://swift-words-shout.loca.lt)
-- **Live Backend REST API**: [https://eighty-flowers-greet.loca.lt](https://eighty-flowers-greet.loca.lt)
+- **Live Production Frontend Portal**: [https://fundsroom-assignment.vercel.app](https://fundsroom-assignment.vercel.app)
+- **Live Production Backend REST API**: [https://mini-erp-crm-backend-x84m.onrender.com](https://mini-erp-crm-backend-x84m.onrender.com)
 - **Postman API Collection**: Included in repository as [`Mini_ERP_CRM.postman_collection.json`](./Mini_ERP_CRM.postman_collection.json)
 
 ---
 
 ## 🔑 Test Login Credentials
 
-The database comes pre-seeded with four test user accounts representing all required system roles. Password for all accounts is **`password123`**:
+The production database is pre-seeded with four test user accounts representing all required system roles. Password for all accounts is **`password123`**:
 
 | Role | Email | Access Permissions & Purpose |
 | :--- | :--- | :--- |
