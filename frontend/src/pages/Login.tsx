@@ -17,7 +17,11 @@ export const Login: React.FC = () => {
     try {
       await login(email, password);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Invalid email or password');
+      if (!err.response) {
+        setError('Server is spinning up or unreachable. Please wait 10 seconds and try again.');
+      } else {
+        setError(err.response?.data?.message || 'Invalid email or password');
+      }
     } finally {
       setLoading(false);
     }
@@ -31,7 +35,11 @@ export const Login: React.FC = () => {
     try {
       await login(roleEmail, 'password123');
     } catch (err: any) {
-      setError('Quick login failed. Please ensure database is seeded.');
+      if (!err.response) {
+        setError('Server is spinning up. Please wait 10 seconds and try again.');
+      } else {
+        setError(err.response?.data?.message || 'Quick login failed. Please ensure database is seeded.');
+      }
     } finally {
       setLoading(false);
     }

@@ -1,7 +1,17 @@
 import axios from 'axios';
 import { Customer, Product, SalesChallan, StockLog, DashboardStats, Pagination } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const getApiBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return 'https://mini-erp-crm-backend-x84m.onrender.com/api';
+  }
+  return '/api';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 const api = axios.create({
   baseURL: API_BASE_URL,
